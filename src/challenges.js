@@ -31,3 +31,33 @@ const renderCounterApp = () => {
   };
   
   renderCounterApp();
+
+  class Visibility extends React.Component {
+    
+    constructor(props) {
+        super(props);
+        this.toggleVisibility = this.toggleVisibility.bind(this);
+        this.state = {
+            visibility : true
+        };
+    }
+
+    toggleVisibility() {
+        console.log(this.state.visibility);
+        this.setState((prevState) => {
+            return {
+                visibility: !(prevState.visibility)
+            }
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>Visi Toggle</h1>
+                <button onClick={this.toggleVisibility}>{this.state.visibility ? 'Hide' : 'Show'}</button>
+                {this.state.visibility && 'Text Lmfao'}
+            </div>
+        )
+    }
+}
